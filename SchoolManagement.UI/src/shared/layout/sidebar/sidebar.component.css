@@ -1,0 +1,118 @@
+.sidebar {
+  width: 250px;
+  background-color: #1a202c;
+  color: #a0aec0;
+  height: 200vh;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+  .sidebar-header {
+    padding: 0 20px 20px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      img {
+        height: 40px;
+      }
+      span {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+  }
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    border-top: 1px solid #2d3748;
+    border-bottom: 1px solid #2d3748;
+    margin-bottom: 20px;
+
+    .user-info {
+      h4 {
+        margin: 0;
+        color: #fff;
+        font-size: 16px;
+      }
+      span {
+        font-size: 12px;
+        color: #cbd5e0;
+      }
+    }
+  }
+
+  .sidebar-nav {
+    flex-grow: 1;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 5px;
+
+        a {
+          display: flex;
+          align-items: center;
+          padding: 12px 20px;
+          color: #a0aec0;
+          text-decoration: none;
+          font-size: 16px;
+          transition: background-color 0.2s ease;
+
+          i {
+            margin-right: 15px;
+            font-size: 18px;
+          }
+
+          .expand-icon {
+            margin-left: auto;
+          }
+
+          &:hover {
+            background-color: #2d3748;
+            color: #fff;
+          }
+        }
+
+        &.active-item {
+          a {
+            background-color: #4c51bf; /* Example active color */
+            color: #fff;
+            border-left: 5px solid #667eea; /* Highlight for active item */
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar-footer {
+    padding: 20px;
+    .log-out-button {
+      width: 100%;
+      background-color: #e53e3e; /* Red logout button */
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #c53030;
+      }
+    }
+  }
+}

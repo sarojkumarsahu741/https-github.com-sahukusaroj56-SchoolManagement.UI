@@ -1,0 +1,50 @@
+.students-container {
+  padding: 20px;
+  background-color: var(--surface-ground);
+  color: var(--text-color);
+
+  .students-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: var(--surface-card);
+    padding: 15px 20px;
+    border-radius: 6px;
+    box-shadow: var(--surface-shadow);
+
+    .left-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      .header-icon {
+        font-size: 24px;
+        color: var(--text-color-secondary);
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 24px;
+        color: var(--text-color);
+      }
+
+      .all-students-list-text {
+        font-size: 14px;
+        color: var(--text-color-secondary);
+        border-left: 1px solid var(--surface-border);
+        padding-left: 15px;
+      }
+    }
+
+    .right-section {
+    }
+  }
+
+  .students-content {
+    background-color: var(--surface-card);
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: var(--surface-shadow);
+  }
+}

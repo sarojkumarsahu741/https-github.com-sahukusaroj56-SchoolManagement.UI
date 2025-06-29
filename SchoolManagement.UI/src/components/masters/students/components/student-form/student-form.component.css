@@ -1,0 +1,132 @@
+.student-form-container {
+  padding: 20px;
+  background-color: var(--surface-card);
+  border-radius: 6px;
+  box-shadow: var(--surface-shadow);
+
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--surface-border);
+    padding-bottom: 15px;
+
+    h3 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--text-color);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  .form-section {
+    background-color: var(--surface-ground);
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+  }
+
+  .p-formgrid.p-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .p-col-12 {
+      width: 100%;
+    }
+    .p-md-6 {
+      flex: 1 1 calc(50% - 10px);
+      max-width: calc(50% - 10px);
+    }
+  }
+
+  :host ::ng-deep {
+    .p-field {
+      margin-bottom: 1.5rem;
+    }
+
+    .p-float-label {
+      label {
+        color: var(--text-color-secondary);
+      }
+    }
+
+    .p-inputtext, .p-dropdown, .p-calendar {
+      width: 100%;
+       background-color: var(--surface-100);
+       border-color: var(--surface-border);
+      color: var(--text-color);
+    }
+
+    .p-dropdown .p-dropdown-label {
+      color: var(--text-color);
+    }
+
+    .p-radiobutton .p-radiobutton-box {
+      border-color: var(--primary-color);
+      &.p-highlight {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+    }
+
+    .p-buttonset {
+      display: flex;
+      gap: 10px;
+      .p-button {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  .file-upload-box {
+    border: 2px dashed var(--surface-border);
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    color: var(--text-color-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    position: relative;
+
+    .icon-placeholder {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+    p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .p-fileupload-basic {
+      margin-top: 10px;
+      .p-button {
+        width: auto;
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .p-error {
+    color: var(--red-500);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: block;
+  }
+}
