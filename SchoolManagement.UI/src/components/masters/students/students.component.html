@@ -2,22 +2,18 @@
   <div class="flex items-center justify-between mb-6">
     <div class="flex items-center gap-3">
       <p-button icon="pi pi-arrow-left" styleClass="p-button-rounded p-button-text p-button-sm" (click)="onBackArrowClick()"></p-button>
-      <!-- <div class="relative w-64">
-        <input pInputText type="search" placeholder="Search" class="w-full"
-                     styleClass="rounded-full bg-white text-gray-500 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 pl-10 pr-4 py-2"/>
-        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-      </div> -->
       <div class="relative w-full">
-  <input pInputText type="search" placeholder="Search" class="w-full rounded-full bg-white text-gray-500 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 pl-10 pr-4 py-2" />
-  <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-</div>
+        <input pInputText type="search" placeholder="Search"
+               class="w-full rounded-full bg-white text-gray-500 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 pl-10 pr-4 py-2"
+               [(ngModel)]="searchText" /> <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+      </div>
     </div>
     <div class="flex items-center gap-4">
       <p-button icon="pi pi-bell" styleClass="p-button-rounded p-button-text p-button-sm"></p-button>
       <p-button icon="pi pi-comment" styleClass="p-button-rounded p-button-text p-button-sm"></p-button>
       <p-button icon="pi pi-cog" styleClass="p-button-rounded p-button-text p-button-sm"></p-button>
       <img alt="User profile photo of a person with short hair wearing a blue shirt" class="w-10 h-10 rounded-full object-cover"
-        height="40" src="https://storage.googleapis.com/a1aa/image/1a5d8e4e-bd04-418c-e497-62dfd9fa31a2.jpg" width="40" />
+           height="40" src="https://storage.googleapis.com/a1aa/image/1a5d8e4e-bd04-418c-e497-62dfd9fa31a2.jpg" width="40" />
     </div>
   </div>
 
@@ -34,7 +30,23 @@
   </div>
 
   <ng-container *ngIf="!showStudentForm; else studentForm">
-    <app-student-list [students]="students" (edit)="onEditStudent($event)" (delete)="onDeleteStudent($event)"></app-student-list>
+    <div class="bg-white rounded-xl p-4 shadow-sm flex flex-col flex-1">
+      <app-grid [gridVM]="students"
+                [columns]="columns"
+                [customSortEnabled]="true"
+                [gridSearchText]="searchText"
+                [paginator]="true"
+                [searchPlaceHolder]="'Search by Name or roll number'"
+                (gridEvent)="handleGridEvent($event)"
+                [CustomSearch]="false"
+                (fullscreenToggle)="onFullscreenToggle($event)"
+                [sortBy]="sortBy"
+                [sortDirection]="sortDirection"
+                [pageNumber]="pageNumber"
+                [totalRecords]="totalRecords"
+                [pageSize]="pageSize">
+                 </app-grid>
+    </div>
   </ng-container>
 
   <ng-template #studentForm>

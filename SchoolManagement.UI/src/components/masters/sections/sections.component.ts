@@ -12,6 +12,7 @@ import { LoadingSpinnerComponent } from "../../../shared/loading-spinner/loading
 
 @Component({
   selector: 'app-sections',
+  standalone : true,
   imports: [CommonModule, FormsModule, GridComponent, LoadingSpinnerComponent],
   templateUrl: './sections.component.html',
   styleUrl: './sections.component.css'

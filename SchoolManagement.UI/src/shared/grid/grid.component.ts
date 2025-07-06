@@ -24,14 +24,15 @@ import { UtcToIstPipe } from "../utc-to-ist.pipe";
   imports: [TableModule, FormsModule, CommonModule, InputNumberModule, ButtonModule, TagModule, TooltipModule, CalendarModule, DropdownModule, InputTextModule, MinutesToHHMMPipe, UtcToIstPipe],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.css',
+  standalone: true,
   animations: [
     trigger('fadeIn', [
-      state('void', style({ opacity: 0 })),
+      state('void', style({opacity: 0})),
       transition(':enter', [
-        animate('200ms ease-in', style({ opacity: 1 }))
+        animate('200ms ease-in', style({opacity: 1}))
       ]),
       transition(':leave', [
-        animate('200ms ease-out', style({ opacity: 0 }))
+        animate('200ms ease-out', style({opacity: 0}))
       ])
     ])
   ]
@@ -321,6 +322,6 @@ export class GridComponent {
       return sum + (isNaN(val) ? 0 : val);
     }, 0);
   }
-  
+
 
 }

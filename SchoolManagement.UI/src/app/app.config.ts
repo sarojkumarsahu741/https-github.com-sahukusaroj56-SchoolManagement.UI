@@ -23,11 +23,11 @@ export const appConfig: ApplicationConfig = {
   provideAnimationsAsync(),
   providePrimeNG({
     theme: {
-      preset: MyPreset,
-      options: {
-        darkModeSelector: false,
-        cssLayer: true
-      }
+      preset: LaraLight
+      // options: {
+      //   darkModeSelector: false,
+      //   cssLayer: true
+      // }
     }
   }),
     ConfirmationService

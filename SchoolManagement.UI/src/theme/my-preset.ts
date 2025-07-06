@@ -29,7 +29,7 @@ const MyPreset = definePreset(Aura);
 //       .p-button-asset {
 //         background-color: ${dt('button.asset.color')};;
 //         color: ${dt('button.main.inverseColor')};
-//       } 
+//       }
 
 //         .btn-main {
 //             background-color: #307095;
@@ -157,7 +157,7 @@ const MyPreset = definePreset(Aura);
 //                 color: #777;
 //               }
 //             `
-//           }          
+//           }
 //     }
 // });
 
