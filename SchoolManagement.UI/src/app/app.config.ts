@@ -1,35 +1,22 @@
-import { ApplicationConfig, provideAppInitializer, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
+import { ApplicationConfig, provideZoneChangeDetection } from "@angular/core";
+import { provideRouter } from "@angular/router";
 
-import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
-import { AuthInterceptor } from '../auth/auth.interceptor';
-import { initializeToken } from '../auth/token.initializer'
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { providePrimeNG } from 'primeng/config';
-import LaraLight from '@primeng/themes/lara';
-import Aura from '@primeng/themes/aura';
-import { ConfirmationService } from 'primeng/api';
-import MyPreset from '../theme/my-preset';
+import { routes } from "./app.routes";
+import { provideHttpClient, withFetch } from "@angular/common/http";
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
+import { providePrimeNG } from "primeng/config";
+import LaraLight from "@primeng/themes/lara";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
-  provideRouter(routes, withEnabledBlockingInitialNavigation()),
-  provideHttpClient(withFetch(), withInterceptorsFromDi()),
-  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  provideAppInitializer(initializeToken),
-  provideClientHydration(withEventReplay()),
-  provideAnimationsAsync(),
-  providePrimeNG({
-    theme: {
-      preset: LaraLight
-      // options: {
-      //   darkModeSelector: false,
-      //   cssLayer: true
-      // }
-    }
-  }),
-    ConfirmationService
-  ]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideHttpClient(withFetch()),
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: LaraLight,
+      },
+    }),
+  ],
 };

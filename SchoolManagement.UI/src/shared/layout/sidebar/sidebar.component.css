@@ -1,118 +1,168 @@
 .sidebar {
-  width: 250px;
-  background-color: #1a202c;
-  color: #a0aec0;
-  height: 200vh;
-  padding: 20px 0;
+  width: 214px;
+  background: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  height: 100vh;
+  padding: 24px 0;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 1);
+  font-family: "__Inter_d65c78, sans-serif";
+  border-radius: 16px;
 
+  /* Logo Section */
   .sidebar-header {
-    padding: 0 20px 20px;
+    padding: 0 24px 32px;
+
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+
       img {
         height: 40px;
+        width: 40px;
+        border-radius: 8px;
+        object-fit: cover;
       }
+
       span {
-        font-size: 24px;
-        font-weight: bold;
-        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: 0.5px;
       }
     }
   }
 
-  .user-profile {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 20px;
-    border-top: 1px solid #2d3748;
-    border-bottom: 1px solid #2d3748;
-    margin-bottom: 20px;
-
-    .user-info {
-      h4 {
-        margin: 0;
-        color: #fff;
-        font-size: 16px;
-      }
-      span {
-        font-size: 12px;
-        color: #cbd5e0;
-      }
-    }
-  }
-
+  /* Navigation */
   .sidebar-nav {
     flex-grow: 1;
+    padding: 0 16px;
+
     ul {
       list-style: none;
       padding: 0;
       margin: 0;
 
       li {
-        margin-bottom: 5px;
+        margin-bottom: 4px;
 
         a {
           display: flex;
           align-items: center;
-          padding: 12px 20px;
-          color: #a0aec0;
+          padding: 14px 16px;
+          color: rgb(255, 255, 255);
           text-decoration: none;
-          font-size: 16px;
-          transition: background-color 0.2s ease;
+          font-size: 15px;
+          font-weight: 500;
+          border-radius: 12px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
 
           i {
-            margin-right: 15px;
+            margin-right: 16px;
             font-size: 18px;
+            width: 20px;
+            text-align: center;
           }
 
-          .expand-icon {
-            margin-left: auto;
+          span {
+            color: rgb(255, 255, 255);
           }
 
           &:hover {
-            background-color: #2d3748;
-            color: #fff;
+            background: rgba(116, 199, 236, 0.1);
+            color: #74c7ec;
+            transform: translateX(4px);
           }
         }
 
         &.active-item {
           a {
-            background-color: #4c51bf; /* Example active color */
-            color: #fff;
-            border-left: 5px solid #667eea; /* Highlight for active item */
-            padding-left: 15px;
+            background: rgba(255, 255, 255, 1);
+            color: rgba(0, 0, 0, 1);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(116, 199, 236, 0.3);
+
+            span {
+              color: rgba(0, 0, 0, 1);
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              left: -16px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 4px;
+              height: 24px;
+              background: #74c7ec;
+              border-radius: 2px;
+            }
           }
         }
       }
     }
   }
 
-  .sidebar-footer {
-    padding: 20px;
-    .log-out-button {
-      width: 100%;
-      background-color: #e53e3e; /* Red logout button */
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: background-color 0.2s ease;
+  /* Logout Button */
+  .logout-btn {
+    margin: 24px 16px 0;
+    background: rgba(255, 255, 255, 1);
+    color: rgba(0, 0, 0, 1);
+    border: 1px solid rgba(243, 139, 168, 0.2);
+    padding: 14px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
 
-      &:hover {
-        background-color: #c53030;
-      }
+    i {
+      font-size: 16px;
+    }
+
+    span {
+      color: rgba(0, 0, 0, 1);
+    }
+
+    &:hover {
+      background: rgba(243, 139, 168, 0.2);
+      border-color: rgba(243, 139, 168, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(243, 139, 168, 0.2);
     }
   }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 214px;
+  }
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(116, 199, 236, 0.3);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(116, 199, 236, 0.5);
 }

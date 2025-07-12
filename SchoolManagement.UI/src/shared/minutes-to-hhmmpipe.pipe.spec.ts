@@ -1,8 +1,8 @@
-import { MinutesToHHMMPipePipe } from './minutes-to-hhmmpipe.pipe';
+import { MinutesToHHMMPipe } from "./minutes-to-hhmmpipe.pipe";
 
-describe('MinutesToHHMMPipePipe', () => {
-  it('create an instance', () => {
-    const pipe = new MinutesToHHMMPipePipe();
+describe("MinutesToHHMMPipe", () => {
+  it("create an instance", () => {
+    const pipe = new MinutesToHHMMPipe();
     expect(pipe).toBeTruthy();
   });
 });

@@ -1,9 +1,15 @@
 <div class="flex w-full h-screen bg-[#f3f4f8]">
-  <div class="h-full bg-white shadow-lg transition-all duration-300 ease-in-out"
-       [ngClass]="{'w-0 opacity-0 overflow-hidden': isSidebarCollapsed, 'w-16rem': !isSidebarCollapsed}">
+  <div
+    class="h-full bg-white shadow-lg transition-all duration-300 ease-in-out"
+    [ngClass]="{
+      'w-0 opacity-0 overflow-hidden': isSidebarCollapsed,
+      'w-16rem': !isSidebarCollapsed,
+    }"
+  >
     <app-sidebar></app-sidebar>
   </div>
 
   <div class="flex-1 overflow-y-auto">
-    <router-outlet></router-outlet> </div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

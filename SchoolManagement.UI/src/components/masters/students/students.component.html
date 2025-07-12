@@ -1,55 +1,156 @@
-<main class="flex-1 p-6 flex flex-col rounded-3xl bg-[#f3f4f8] overflow-y-auto">
-  <div class="flex items-center justify-between mb-6">
-    <div class="flex items-center gap-3">
-      <p-button icon="pi pi-arrow-left" styleClass="p-button-rounded p-button-text p-button-sm" (click)="onBackArrowClick()"></p-button>
-      <div class="relative w-full">
-        <input pInputText type="search" placeholder="Search"
-               class="w-full rounded-full bg-white text-gray-500 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 pl-10 pr-4 py-2"
-               [(ngModel)]="searchText" /> <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+<div class="students-layout">
+  <!-- Header Section -->
+  <div class="students-header">
+    <h1 class="page-title">Students</h1>
+    <button
+      pButton
+      type="button"
+      label="Add New"
+      icon="pi pi-plus"
+      class="p-button-sm add-new-btn"
+      (click)="onAddNewStudent()"
+    ></button>
+  </div>
+
+  <!-- Content Section -->
+  <div class="students-content">
+    <div class="content-header">
+      <h2 class="content-title">All Students List</h2>
+      <div class="content-actions">
+        <div class="search-container">
+          <i class="pi pi-search search-icon"></i>
+          <input
+            pInputText
+            type="text"
+            placeholder="Search by Name or roll"
+            class="search-input"
+            [(ngModel)]="searchValue"
+            (input)="onSearch()"
+          />
+        </div>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-filter"
+          class="p-button-outlined p-button-sm filter-btn"
+          title="All Courses"
+        ></button>
       </div>
     </div>
-    <div class="flex items-center gap-4">
-      <p-button icon="pi pi-bell" styleClass="p-button-rounded p-button-text p-button-sm"></p-button>
-      <p-button icon="pi pi-comment" styleClass="p-button-rounded p-button-text p-button-sm"></p-button>
-      <p-button icon="pi pi-cog" styleClass="p-button-rounded p-button-text p-button-sm"></p-button>
-      <img alt="User profile photo of a person with short hair wearing a blue shirt" class="w-10 h-10 rounded-full object-cover"
-           height="40" src="https://storage.googleapis.com/a1aa/image/1a5d8e4e-bd04-418c-e497-62dfd9fa31a2.jpg" width="40" />
-    </div>
+
+    <!-- Data Table -->
+    <p-table
+      [value]="students"
+      [paginator]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '100%' }"
+      styleClass="custom-table"
+      currentPageReportTemplate="Page {first} to {last} of {totalRecords} entries"
+      [rowHover]="true"
+      dataKey="id"
+    >
+      <!-- Table Header -->
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 50px">No</th>
+          <th style="width: 200px">Students</th>
+          <th style="width: 100px">Roll num</th>
+          <th style="width: 80px">Class</th>
+          <th style="width: 120px">Account_Type</th>
+          <th style="width: 100px">Transport</th>
+          <th style="width: 120px">Location</th>
+          <th style="width: 120px">Contact</th>
+          <th style="width: 80px">Rank</th>
+          <th style="width: 80px">Points</th>
+          <th style="width: 100px">Action</th>
+        </tr>
+      </ng-template>
+
+      <!-- Table Body -->
+      <ng-template pTemplate="body" let-student let-rowIndex="rowIndex">
+        <tr>
+          <td>{{ rowIndex + 1 }}</td>
+          <td>
+            <div class="student-cell">
+              <img
+                [src]="
+                  student.profilePic ||
+                  'https://via.placeholder.com/32x32/FF6B6B/FFFFFF?text=' +
+                    student.name.charAt(0)
+                "
+                [alt]="student.name"
+                class="student-avatar"
+              />
+              <span class="student-name">{{ student.name }}</span>
+            </div>
+          </td>
+          <td>{{ student.rollNum }}</td>
+          <td>{{ student.className }}</td>
+          <td>{{ student.accomType }}</td>
+          <td>{{ student.transport }}</td>
+          <td>{{ student.location }}</td>
+          <td>{{ student.contact }}</td>
+          <td>{{ student.rank }}</td>
+          <td>{{ student.points }}</td>
+          <td>
+            <div class="action-buttons">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-eye"
+                class="p-button-rounded p-button-text p-button-sm action-btn"
+                pTooltip="View"
+                (click)="viewStudent(student)"
+              ></button>
+              <button
+                pButton
+                type="button"
+                icon="pi pi-pencil"
+                class="p-button-rounded p-button-text p-button-sm action-btn"
+                pTooltip="Edit"
+                (click)="editStudent(student)"
+              ></button>
+              <button
+                pButton
+                type="button"
+                icon="pi pi-trash"
+                class="p-button-rounded p-button-text p-button-sm action-btn delete-btn"
+                pTooltip="Delete"
+                (click)="deleteStudent(student)"
+              ></button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <!-- Empty State -->
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="11" class="text-center p-4">No students found</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 
-  <div class="flex justify-between items-center mb-4">
-    <h1 class="text-xl font-semibold text-gray-900">
-      Students
-    </h1>
-    <p-button *ngIf="!showStudentForm" label="Add New" icon="pi pi-plus" iconPos="right"
-              styleClass="p-button-text p-button-plain p-button-sm text-gray-900 hover:text-gray-700"
-              (click)="onAddNewStudent()"></p-button>
-    <p-button *ngIf="showStudentForm" label="Back to List" icon="pi pi-arrow-left" iconPos="left"
-              styleClass="p-button-text p-button-plain p-button-sm text-gray-900 hover:text-gray-700"
-              (click)="onCancelForm()"></p-button>
-  </div>
+  <!-- Student Form Dialog -->
+  <p-dialog
+    header="{{ selectedStudent ? 'Edit Student' : 'Add New Student' }}"
+    [(visible)]="showStudentForm"
+    [modal]="true"
+    [style]="{ width: '80vw', maxWidth: '1000px' }"
+    [closable]="true"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <app-student-form
+      [student]="selectedStudent"
+      (formSubmit)="onFormSubmit($event)"
+      (cancel)="onCancelForm()"
+    >
+    </app-student-form>
+  </p-dialog>
 
-  <ng-container *ngIf="!showStudentForm; else studentForm">
-    <div class="bg-white rounded-xl p-4 shadow-sm flex flex-col flex-1">
-      <app-grid [gridVM]="students"
-                [columns]="columns"
-                [customSortEnabled]="true"
-                [gridSearchText]="searchText"
-                [paginator]="true"
-                [searchPlaceHolder]="'Search by Name or roll number'"
-                (gridEvent)="handleGridEvent($event)"
-                [CustomSearch]="false"
-                (fullscreenToggle)="onFullscreenToggle($event)"
-                [sortBy]="sortBy"
-                [sortDirection]="sortDirection"
-                [pageNumber]="pageNumber"
-                [totalRecords]="totalRecords"
-                [pageSize]="pageSize">
-                 </app-grid>
-    </div>
-  </ng-container>
-
-  <ng-template #studentForm>
-    <app-student-form [student]="selectedStudent" (formSubmit)="onFormSubmit($event)" (cancel)="onCancelForm()"></app-student-form>
-  </ng-template>
-</main>
+  <!-- Delete Confirmation Dialog -->
+  <p-confirmDialog></p-confirmDialog>
+</div>
