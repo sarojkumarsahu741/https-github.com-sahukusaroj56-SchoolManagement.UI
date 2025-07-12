@@ -1,0 +1,215 @@
+.action-link {
+  margin-right: 8px;
+}
+
+.table-header{
+flex-wrap: wrap;
+gap: 1rem;
+}
+.searchInput{
+width: 30vw;
+}
+
+.table-pagination{
+flex-wrap: wrap;
+}
+
+.circular-image {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.pagination-navigator{
+margin: 10px;
+}
+
+
+
+/* Styling for the total count container */
+.total-count {
+  margin-top: 10px; /* Space between the table and count */
+  text-align: right; /* Align the text to the right */
+  font-size: 1rem; /* Adjust font size */
+  font-weight: bold; /* Make it bold */
+  color: #4caf50; /* Add a green color for emphasis */
+}
+
+/* Add subtle border for separation */
+.total-count::before {
+  content: '';
+  display: block;
+  border-top: 1px solid #ddd; /* Light gray border */
+  margin-bottom: 10px; /* Space after the border */
+}
+
+::ng-deep .p-calendar,
+::ng-deep .p-dropdown,
+::ng-deep .p-inputtext {
+  width: 100%;
+}
+
+/* Table header styles */
+
+.custom-table-header {
+  background-color: #cfe2ff !important;  /* Light orange background */
+}
+
+.custom-table-header th {
+  font-size: 1rem !important;         /* Slightly larger text */
+  padding: 1rem 1rem !important;        /* More padding for height */
+  font-weight: 600 !important;          /* Slightly bolder */
+  color: black;
+  background-color: transparent;
+}
+
+.dynamic-button-color{
+  color: white !important;
+}
+
+
+  /* Filter Tabs Styling */
+
+  .filters-section {
+    margin-bottom: 20px;
+  }
+  
+  .filters-heading {
+    color: #495057;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+.filter-tabs-container {
+  margin-bottom: 20px;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px; /* Space for scrollbar */
+}
+
+.filter-tab {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  border: 1px solid #dee2e6;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-tab:hover {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+}
+
+.filter-tab.active {
+  background-color: #cfe2ff;
+  border-color: #9ec5fe;
+  color: #052c65;
+  font-weight: 600;
+}
+
+/* Optional: Scrollbar styling for horizontal tabs */
+.filter-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.filter-tabs::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.filter-tabs::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.filter-tabs::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+@media (max-width: 768px) {
+  .total-count {
+    font-size: 0.9rem; /* Smaller font for mobile */
+  }
+  .pagination-button{
+    padding: 10px;
+  }
+  .pagination-list{
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchInput {
+   width: 50vw;
+   margin-right: 0 !important;
+  }
+  .table-header{
+    justify-content: flex-end;
+  }
+}
+
+.bg5w{
+  background-color: red;
+}
+
+.p-datatable thead tr th {
+  background-color: #cfe2ff !important; /* Light blue header */
+  color: #1a1a1a !important; /* Dark text */
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.p-datatable tbody td {
+  font-size: 13px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.p-datatable > :not(caption) > * > * {
+  padding: 8px 10px;
+}
+
+.action-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0dcaf0;
+  color: white;
+  padding: 6px;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  text-align: center;
+}
+
+.action-link:hover {
+  background-color: #0bbbe6;
+  color: #fff;
+}
+
+.p-datatable .p-datatable-emptymessage td {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+.text-orange{
+  color: orange;
+}

@@ -48,3 +48,14 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Ignore Visual Studio files
+.vs/
+
+# Ignore Visual Studio Code workspace settings
+.vscode/
+
+# Ignore build output directories
+bin/
+obj/
+
+

@@ -1,0 +1,63 @@
+<section class="bg-white rounded-xl p-4 shadow-sm flex flex-col flex-1">
+  <div class="flex justify-between items-center mb-3">
+    <span class="text-sm font-semibold text-gray-900">
+      All Students List
+    </span>
+    <div class="flex items-center gap-3 text-gray-400 text-sm">
+      <input pInputText type="search" placeholder="Search by Name or roll."
+  class="p-inputtext-sm rounded-full bg-gray-100 text-xs text-gray-400 placeholder-gray-400 py-1 px-3 w-48
+  focus:outline-none focus:ring-2 focus:ring-blue-400" />
+           <p-dropdown 
+              [options]="['All Classes', '12 - A', '11 - B']" 
+              placeholder="All Classes" 
+              class="p-dropdown-sm">
+           </p-dropdown>
+      </div>
+  </div>
+
+  <div class="overflow-x-auto rounded-lg border border-gray-200 flex-1">
+    <p-table [value]="students" [scrollable]="true" scrollHeight="flex" [paginator]="true" [rows]="rows" [first]="first"
+             [showCurrentPageReport]="false" (onPage)="onPageChange($event)"
+             [rowsPerPageOptions]="[5, 10, 20]"
+             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+             class="p-datatable-sm w-full">
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let col of cols" [style.width]="col.width" class="bg-[#e6f2f9] text-gray-700 font-normal py-2 px-3">
+            {{ col.header }}
+          </th>
+          <th style="width: 15%" class="bg-[#e6f2f9] text-gray-700 font-normal py-2 px-3">Action</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-student>
+        <tr>
+          <td class="py-2 px-3 text-gray-400 font-normal">{{ student.no }}</td>
+          <td class="py-2 px-3 flex items-center gap-2 text-gray-500 font-normal">
+            <img alt="{{ student.name }} profile photo" class="w-6 h-6 rounded-full object-cover" height="24"
+              [src]="student.profilePic" width="24" />
+            {{ student.name }}
+          </td>
+          <td class="py-2 px-3 font-normal">{{ student.rollNum }}</td>
+          <td class="py-2 px-3 font-normal">{{ student.class }}</td>
+          <td class="py-2 px-3 font-normal">{{ student.accomType }}</td>
+          <td class="py-2 px-3 font-normal">{{ student.transport }}</td>
+          <td class="py-2 px-3 font-normal">{{ student.location }}</td>
+          <td class="py-2 px-3 font-normal">{{ student.contact }}</td>
+          <td class="py-2 px-3 font-normal">{{ student.rank }}</td>
+          <td class="py-2 px-3 font-normal">{{ student.points }}</td>
+          <td class="py-2 px-3 flex gap-3 text-gray-400">
+            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-sm" (click)="onEdit(student)"></button>
+            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-text p-button-sm p-button-danger" (click)="onDelete(student.rollNum)"></button>
+            <button pButton pRipple icon="pi pi-ellipsis-h" class="p-button-rounded p-button-text p-button-sm"></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td [attr.colspan]="cols.length + 1" class="text-center py-4">No students found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  </section>

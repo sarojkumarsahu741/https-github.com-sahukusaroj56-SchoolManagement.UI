@@ -1,0 +1,51 @@
+.student-list-container {
+  .p-d-flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .p-jc-between {
+    justify-content: space-between;
+  }
+
+  .p-ai-center {
+    align-items: center;
+  }
+
+  .p-mb-3 {
+    margin-bottom: 1.5rem;
+  }
+
+  .student-info-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 5px;
+  }
+
+
+  :host ::ng-deep {
+    .p-datatable {
+      .p-datatable-thead > tr > th {
+        background-color: var(--surface-ground);
+        color: var(--text-color-secondary);
+        font-weight: 600;
+      }
+
+      .p-datatable-tbody > tr > td {
+        padding: 0.75rem 1rem;
+        vertical-align: middle;
+      }
+
+      .p-paginator {
+        background-color: var(--surface-card);
+        border: none;
+        padding-top: 1rem;
+      }
+    }
+  }
+}
